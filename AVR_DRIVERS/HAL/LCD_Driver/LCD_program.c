@@ -16,6 +16,7 @@ void LCD_lcd_kick(void)
 	DIO_voidSetPinValue(LCD_CTRL,EN_SWITCH, DIO_PIN_HIGH);
 	_delay_us(1);
 	DIO_voidSetPinValue(LCD_CTRL,EN_SWITCH, DIO_PIN_LOW);
+	//_delay_ms(2);
 }
 
 void LCD_WRITE_COMMAND(u8 command)
@@ -31,9 +32,9 @@ void LCD_WRITE_COMMAND(u8 command)
 	DIO_voidSetPinValue (LCD_PORT, CLCD_D6, GET_BIT(command,6) );
 	DIO_voidSetPinValue (LCD_PORT, CLCD_D5, GET_BIT(command,5) );
 	DIO_voidSetPinValue (LCD_PORT, CLCD_D4, GET_BIT(command,4) );
-
 	LCD_lcd_kick();
 	_delay_us(200);
+	
 	
 	DIO_voidSetPinValue (LCD_PORT, CLCD_D7, GET_BIT(command,3) );
 	DIO_voidSetPinValue (LCD_PORT, CLCD_D6, GET_BIT(command,2) );
@@ -41,6 +42,7 @@ void LCD_WRITE_COMMAND(u8 command)
 	DIO_voidSetPinValue (LCD_PORT, CLCD_D4, GET_BIT(command,0) );
 	LCD_lcd_kick();
 	_delay_ms(2);
+
 	
 	#endif
 }
@@ -75,22 +77,24 @@ void LCD_WRITE_CHAR(u8 character)
 
 void LCD_INIT(void)
 {
-	DIO_voidSetPortDirection(LCD_PORT, DIO_PORT_OUTPUT);
-	DIO_voidSetPortDirection(LCD_CTRL , DIO_PORT_OUTPUT);
+
+	DIO_voidSetPinDirection (LCD_CTRL , RS_PIN,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDirection (LCD_CTRL,EN_SWITCH,DIO_PIN_OUTPUT);
+	
+	DIO_voidSetPinDirection (LCD_PORT , CLCD_D4,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDirection (LCD_PORT , CLCD_D5,DIO_PIN_OUTPUT);
+    DIO_voidSetPinDirection (LCD_PORT , CLCD_D6,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDirection (LCD_PORT , CLCD_D7,DIO_PIN_OUTPUT);
 	
 	LCD_WRITE_COMMAND(LCD_CMD_RETURN_HOME);
 
 	_delay_ms(35);
-	
-	#ifdef EIGHT_BIT_MODE
+	#if LCD_u8_MODE == EIGHT_BIT_MODE
 	LCD_WRITE_COMMAND(LCD_CMD_FUNCTION_8BIT_2LINES);
-	#endif
-	
-	#ifdef FOUR_BIT_MODE
+	#elif LCD_u8_MODE == FOUR_BIT_MODE
 	//LCD_WRITE_COMMAND(0x02); // As datasheet
 	LCD_WRITE_COMMAND(LCD_CMD_FUNCTION_4BIT_2LINES);
 	#endif
-	
 	_delay_ms(1);
 	LCD_WRITE_COMMAND(LCD_CMD_DISP_ON_CURSOR_ON);
 	_delay_ms(1);
@@ -98,11 +102,12 @@ void LCD_INIT(void)
 	_delay_ms(2);
 	LCD_WRITE_COMMAND(LCD_CMD_ENTRY_MODE);
 	//LCD_WRITE_COMMAND(LCD_CMD_BEGIN_AT_FIRST_ROW);
+
 }
 
 
 
-void LCD_GOTOXY(unsigned char line, unsigned char position)
+void LCD_GOTOXY(u8 line, u8 position)
 {
 	if (line == 0)
 	{
@@ -122,29 +127,43 @@ void LCD_GOTOXY(unsigned char line, unsigned char position)
 
 void LCD_WRITE_STRING(u8 *string)
 {
-	int count = 0; // To count how much char on the line (it should be 16 char only)
-	
-	while (*string > 0)
+
+	while (*string != '\0')
 	{
-		count++;
-		LCD_WRITE_CHAR(*string++);
-		if (count == 16) // Go to the second line
-		{
-			LCD_GOTOXY(1,0); // Line 1 position 0
-		}
-		else if (count == 
+		LCD_WRITE_CHAR(*string);
+		string++;
 		
+	}
+
+}
+void LCD_voidWriteNumber( u32 Copy_u8num )
+{
+	
+	u8 str[10]={0},i=0 ,j;
+	if(Copy_u8num==0)
+	{
+		LCD_WRITE_CHAR('0');
+		return;
+	}
+	if(Copy_u8num<0)
+	{
+		Copy_u8num=Copy_u8num*(-1);
+		LCD_WRITE_CHAR('-');
+	}
+	
+	while(Copy_u8num!=0)
+	{
+		str[i]=Copy_u8num%10 +'0';
+		Copy_u8num=Copy_u8num/10;
+		i++;
 		
-		32 ) // Clear screen and show again
-		{
-			LCD_CLEAR_SCREEN();
-			LCD_GOTOXY(0,0); // Line 0 Position 0
-			count = 0;
-		}
+	}
+	
+	for (j=i;j>0;j--)
+	{
+		LCD_WRITE_CHAR(str[j-1]);
 	}
 }
-
-
 
 
 

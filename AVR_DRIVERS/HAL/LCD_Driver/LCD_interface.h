@@ -25,11 +25,11 @@
 void LCD_INIT(void);
 void LCD_CLEAR_SCREEN(void);
 void LCD_lcd_kick(void);
-void LCD_WRITE_COMMAND(unsigned char command);
-void LCD_WRITE_CHAR(unsigned char character);
+void LCD_WRITE_COMMAND(u8 command);
+void LCD_WRITE_CHAR(u8 character);
 void LCD_WRITE_STRING(u8 *string);
-void LCD_check_lcd_isbusy(void);
-void LCD_GOTOXY(unsigned char line, unsigned char position);
+void LCD_GOTOXY(u8 line, u8 position);
+void LCD_voidWriteNumber( u32 Copy_u8num );
 
 #endif /* LCD_H_ */
 

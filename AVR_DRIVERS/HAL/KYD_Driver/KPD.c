@@ -7,6 +7,8 @@
 
 
 #include "KPD.h"
+#define F_CPU 16000000UL
+#include <util/delay.h>
 
 u8 KPD_u8GetPressedKey(void)
 {
@@ -52,3 +54,19 @@ u8 KPD_u8GetPressedKey(void)
 	}
 	return Local_u8PressedKey;
 }
+
+//u8* pu8PinValue ;
+//7-Segments
+/*static unsigned char SEGMENT_PATTERN[] = 
+	{
+		0x0000, // 0
+		0x0001, // 1
+		0x0010, // 2
+		0x0011, // 3
+		0x0100, // 4
+		0x0101, // 5
+		0x0110, // 6
+		0x0111, // 7
+		0x1000, // 8
+		0x1001 // 9
+	};*/

@@ -26,7 +26,7 @@
 #define KPD_COL2_PIN	DIO_PIN5
 #define KPD_COL3_PIN	DIO_PIN3
 
-#define KPD_ARRAY  {{'1','2','3','+'},{'4','5','6','-'},{'7','8','9','*'},{'.','0','=','/'}}
+#define KPD_ARRAY  {{'7','8','9','/'},{'4','5','6','*'},{'1','2','3','-'},{'\0','0','=','+'}}
 
 #define NO_PRESSED_KEY 	'\0'
 

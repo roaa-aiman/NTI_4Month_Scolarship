@@ -40,42 +40,7 @@
 #define SFIOR_ADTS1   6
 #define SFIOR_ADTS2   7
 
-#define ADC_CHANNEL_1 0
-#define ADC_CHANNEL_2 1
-#define ADC_CHANNEL_3 2
-#define ADC_CHANNEL_4 3
-#define ADC_CHANNEL_5 4
-#define ADC_CHANNEL_6 5
-#define ADC_CHANNEL_7 6
-#define ADC_CHANNEL_8 7
+    
 
-
-
-	    
-#define VOLTAGE_REFERENCE_AVREF     0
-#define VOLTAGE_REFERENCE_AVCC      1
-#define VOLTAGE_REFERENCE_INTERNAL  2
-
-#define RIGHT_ADJUSTMENT  0
-
-#define LEFT_ADJUSTMENT   1
-
-
-/*****/
-#define SINGLE_CONVERSION 	0
-#define AUTOTRIGGERED 		1
-/*****/
-
-#define FREE_RUNNING_MODE   0
-/*****/
-
-
-#define 	DIVID_BY_128  128
-
-#define INTERRUPT_ENABLE 1
-#define INTERRUPT_DISABLE 0
-
-#define ADC_ENABLE  1
-#define ADC_DISABLE  0
 
 #endif /* ADC_PRIVATE_H_ */

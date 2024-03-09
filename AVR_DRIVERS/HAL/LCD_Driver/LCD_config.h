@@ -9,6 +9,14 @@
 #ifndef LCD_CONFIG_H_
 #define LCD_CONFIG_H_
 
+#define LCD_CTRL			DIO_PORTA
+
+
+//#define	RW_PIN			2
+
+#define RS_PIN				DIO_PIN3
+#define EN_SWITCH			DIO_PIN2
+
 #define LCD_PORT			DIO_PORTB
 
 
@@ -18,13 +26,7 @@
 #define CLCD_D7				DIO_PIN4
 
 
-#define LCD_CTRL			DIO_PORTA
 
-
-//#define	RW_PIN			2
-
-#define RS_PIN				DIO_PIN3
-#define EN_SWITCH			DIO_PIN2
 
 
 /* options 
