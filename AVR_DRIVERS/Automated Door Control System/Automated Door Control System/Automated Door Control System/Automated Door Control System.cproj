@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.microchip.xc8</ToolchainName>
+    <ProjectGuid>2285C48D-296E-43FD-A7B6-69885F64CFFD</ProjectGuid>
+    <avrdevice>ATmega32</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>DIO_DRIVER</AssemblyName>
+    <Name>DIO_DRIVER</Name>
+    <RootNamespace>DIO_DRIVER</RootNamespace>
+    <ToolchainFlavour>XC8_2.36</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <ResetRule>0</ResetRule>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <EraseKey />
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <avrtoolserialnumber />
+    <avrdeviceexpectedsignature>0x1E9502</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolOptions xmlns="">
+        <InterfaceProperties>
+        </InterfaceProperties>
+      </ToolOptions>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <ToolName xmlns="">Simulator</ToolName>
+    </com_atmel_avrdbg_tool_simulator>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <com.microchip.xc8>
+        <com.microchip.xc8.common.optimization.RelaxBranches>True</com.microchip.xc8.common.optimization.RelaxBranches>
+        <com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <com.microchip.xc8.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>(%24DeviceMacro)</Value>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </com.microchip.xc8.compiler.symbols.DefSymbols>
+        <com.microchip.xc8.compiler.optimization.level>Optimize for size (-Os)</com.microchip.xc8.compiler.optimization.level>
+        <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
+        <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
+        <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
+        <com.microchip.xc8.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </com.microchip.xc8.linker.libraries.Libraries>
+      </com.microchip.xc8>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <com.microchip.xc8>
+  <com.microchip.xc8.common.outputfiles.hex>True</com.microchip.xc8.common.outputfiles.hex>
+  <com.microchip.xc8.common.outputfiles.eep>True</com.microchip.xc8.common.outputfiles.eep>
+  <com.microchip.xc8.common.outputfiles.usersignatures>False</com.microchip.xc8.common.outputfiles.usersignatures>
+  <com.microchip.xc8.common.outputfiles.lss>True</com.microchip.xc8.common.outputfiles.lss>
+  <com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>True</com.microchip.xc8.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <com.microchip.xc8.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>(%24DeviceMacro)</Value>
+      <Value>DEBUG</Value>
+    </ListValues>
+  </com.microchip.xc8.compiler.symbols.DefSymbols>
+  <com.microchip.xc8.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../MCAL/DIO_Driver</Value>
+      <Value>../MCAL/INTERRUPT_Driver</Value>
+      <Value>../HAL/KYD_Driver</Value>
+      <Value>../HAL/LCD_Driver</Value>
+      <Value>../utilites</Value>
+      <Value>../MCAL/GIE_Driver</Value>
+      <Value>../MCAL/ADC_Driver</Value>
+      <Value>../MCAL/SPI_Driver</Value>
+      <Value>../MCAL/TIMER_0_DRIVER</Value>
+      <Value>../MCAL/PWM_Driver</Value>
+      <Value>../HAL/Servo_Motor_Driver</Value>
+    </ListValues>
+  </com.microchip.xc8.compiler.directories.IncludePaths>
+  <com.microchip.xc8.compiler.optimization.level>Optimize debugging experience (-Og)</com.microchip.xc8.compiler.optimization.level>
+  <com.microchip.xc8.compiler.optimization.PackStructureMembers>True</com.microchip.xc8.compiler.optimization.PackStructureMembers>
+  <com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>True</com.microchip.xc8.compiler.optimization.AllocateBytesNeededForEnum>
+  <com.microchip.xc8.compiler.optimization.DebugLevel>Default (-g2)</com.microchip.xc8.compiler.optimization.DebugLevel>
+  <com.microchip.xc8.compiler.warnings.AllWarnings>True</com.microchip.xc8.compiler.warnings.AllWarnings>
+  <com.microchip.xc8.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </com.microchip.xc8.linker.libraries.Libraries>
+  <com.microchip.xc8.assembler.debugging.DebugLevel>Default (-Wa,-g)</com.microchip.xc8.assembler.debugging.DebugLevel>
+</com.microchip.xc8>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="HAL\KYD_Driver\KPD.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KYD_Driver\KPD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Driver\LCD_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Driver\LCD_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Driver\LCD_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Driver\LCD_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Servo_Motor_Driver\Servo_Motor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Servo_Motor_Driver\Servo_Motor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO_Driver\DIO_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO_Driver\DIO_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO_Driver\DIO_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO_Driver\DIO_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE_Driver\GIE_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE_Driver\GIE_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE_Driver\GIE_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\INTERRUPT_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\INTERRUPT_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\INTERRUPT_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\INTERRUPT_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\Timer1_Driver\Timer1_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\Timer1_Driver\Timer1_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\Timer1_Driver\Timer1_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\Timer1_Driver\Timer1_Program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INTERRUPT_Driver\Timer1_Driver\Timer1_Register.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM_Driver\PWM_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM_Driver\PWM_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM_Driver\PWM_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM_Driver\PWM_Program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM_Driver\PWM_Register.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_Driver\SPI_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_Driver\SPI_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_Driver\SPI_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_Driver\SPI_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER_0_DRIVER\Timer0_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER_0_DRIVER\Timer0_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER_0_DRIVER\Timer0_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER_0_DRIVER\Timer0_Program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER_0_DRIVER\Timer0_Register.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER_1_DRIVER\Timer1_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utilites\BIT_MATH.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utilites\STD_TYPES.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HAL\KYD_Driver\" />
+    <Folder Include="HAL\LCD_Driver\" />
+    <Folder Include="HAL\Servo_Motor_Driver" />
+    <Folder Include="MCAL" />
+    <Folder Include="HAL" />
+    <Folder Include="MCAL\DIO_Driver\" />
+    <Folder Include="MCAL\INTERRUPT_Driver\" />
+    <Folder Include="MCAL\GIE_Driver" />
+    <Folder Include="MCAL\ADC_Driver" />
+    <Folder Include="MCAL\INTERRUPT_Driver\Timer1_Driver\" />
+    <Folder Include="MCAL\TIMER_1_DRIVER" />
+    <Folder Include="MCAL\PWM_Driver" />
+    <Folder Include="MCAL\TIMER_0_DRIVER" />
+    <Folder Include="MCAL\SPI_Driver" />
+    <Folder Include="APP" />
+    <Folder Include="utilites" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
