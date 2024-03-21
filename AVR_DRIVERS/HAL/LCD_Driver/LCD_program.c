@@ -125,17 +125,15 @@ void LCD_GOTOXY(u8 line, u8 position)
 	}
 }
 
-void LCD_WRITE_STRING(u8 *string)
+void LCD_voidSendString(u8 *str)
 {
-
-	while (*string != '\0')
+	// Send each character in the string to the LCD
+	while (*str)
 	{
-		LCD_WRITE_CHAR(*string);
-		string++;
-		
+		LCD_WRITE_CHAR(*str++);
 	}
-
 }
+
 void LCD_voidWriteNumber( u32 Copy_u8num )
 {
 	

@@ -27,7 +27,8 @@ void LCD_CLEAR_SCREEN(void);
 void LCD_lcd_kick(void);
 void LCD_WRITE_COMMAND(u8 command);
 void LCD_WRITE_CHAR(u8 character);
-void LCD_WRITE_STRING(u8 *string);
+// Sends a string to be displayed on the LCD
+void LCD_voidSendString(u8 *str);
 void LCD_GOTOXY(u8 line, u8 position);
 void LCD_voidWriteNumber( u32 Copy_u8num );
 
